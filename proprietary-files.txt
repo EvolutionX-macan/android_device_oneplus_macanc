@@ -1779,6 +1779,9 @@ odm/etc/nfc/libnfc-mtp-SN220.conf_24855:vendor/etc/libnfc-nxp.conf
 odm/etc/nfc/libnfc-nci.conf_24855:vendor/etc/libnfc-nci.conf
 odm/etc/nfc/sn220u.bin_sn220tu_fw_01_01_45:vendor/firmware/sn220u.bin
 
+# Oplus feature flags
+my_product/etc/permissions/oplus.feature.android.xml:product/etc/permissions/oplus.feature.android.xml
+
 # Sensors config
 my_product/etc/fusionlight_profile/fusionlight_Main_2_3.json:odm/etc/fusionlight_profile/fusionlight_Main_2_3.json
 odm/etc/sensor/config/json_list
