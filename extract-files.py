@@ -39,10 +39,6 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
-    'odm/etc/camera/CameraHWConfiguration.config': blob_fixup()
-        # Disable face detection AE behaviour
-        .regex_replace(r'(enableSWfdForThirdCamUnit += )TRUE', r'\1FALSE')
-        .regex_replace(r'(fdSupport += )TRUE;', r'\1FALSE;'),
     'odm/etc/init/init.camera_process.rc': blob_fixup()
         .regex_replace('    delete_recursion', '    #delete_recursion'),
     'odm/etc/init/vendor.oplus.hardware.cryptoeng@1.0-service_FDE.rc': blob_fixup()
@@ -50,6 +46,7 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace(r' +if \[.*\n(?: +(?:copy|chmod|chown) .*\n)* +fi\n', ''),
     (
         'odm/lib64/libAlgoProcess.so',
+        'odm/lib64/libAncHumanSegFigureFusion.so',
         'odm/lib64/libEIS.so',
         'odm/lib64/libEISLive.so',
         'odm/lib64/libFaceBeautyJni.so',
@@ -66,6 +63,14 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('AHardwareBuffer_lockPlanes')
         .clear_symbol_version('AHardwareBuffer_release')
         .clear_symbol_version('AHardwareBuffer_unlock'),
+    'odm/lib64/libBasicTonePhoto.so': blob_fixup()
+        .binary_regex_replace(
+            b'vec4\\(dstYuv\\.r, dstYuv\\.b, dstYuv\\.g, 1\\.0\\)',
+            b'vec4(dstYuv.r, dstYuv.g, dstYuv.b, 1.0)',
+        ),
+    'odm/lib64/libsharebuffer_impl.so': blob_fixup()
+        .replace_needed('libutils.so', 'libutils-stock.so')
+        .replace_needed('libui.so', 'libui-stock.so'),
     'odm/lib64/soundfx/libOplusSpatializerAidl.so': blob_fixup()
         .add_needed('libbase.so')
         .patch_file('blob-patches/libOplusSpatializerAidl.py'),
@@ -89,6 +94,8 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/vendor.qti.hardware.camera.offlinecamera-service-impl.so',
     ): blob_fixup()
         .replace_needed('android.hardware.graphics.allocator-V1-ndk.so', 'android.hardware.graphics.allocator-V2-ndk.so'),
+    'vendor/lib64/libui-stock.so': blob_fixup()
+        .replace_needed('android.hardware.graphics.common-V6-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
