@@ -111,6 +111,7 @@ odm/lib64/liboplus_audiox.so
 
 # Camera
 odm/bin/hw/vendor.oplus.hardware.cammidasservice-V1-service
+odm/bin/occe_create
 odm/etc/camera/AIAE_Models/AIAEVideoModelMain.bin
 odm/etc/camera/AIAE_Models/AIAEVideoModelWide.bin
 odm/etc/camera/CaliData/stereoParams_golden.bin
@@ -778,6 +779,7 @@ odm/etc/camera/pfb_bin/ThirdPartyPreSkintuneBinary.bin
 odm/etc/camera/pfb_bin/ThirdPartyPreSkintuneMRTBinary.bin
 odm/etc/camera/pfb_bin/ThirdPartyPreVertFilterBinary.bin
 odm/etc/camera/pfb_bin/ThirdPartyPreVertSurBinary.bin
+odm/etc/camera/singleblur/license_release.license
 odm/etc/camera/singleblur/personseg.bin
 odm/etc/camera/singleblur/preview_seg.json
 odm/etc/camera/sticker/material/animoji/data.zip
@@ -856,6 +858,7 @@ odm/etc/camera/wide_padding_mapxy_33x25.bin
 odm/etc/init/init.camera_debug_ui.rc
 odm/etc/init/init.camera_process.rc
 odm/etc/init/init.camera_upate.rc
+odm/etc/init/occe_create.rc
 odm/etc/init/vendor.oplus.hardware.cammidasservice-V1-service.rc
 odm/etc/vintf/manifest/manifest_oplus_camera_rfi.xml
 odm/etc/vintf/manifest/manifest_oplus_cammidasservice_aidl.xml
@@ -979,6 +982,7 @@ odm/lib64/libAFParamParser.so
 odm/lib64/libAlgoInterface.so
 odm/lib64/libAlgoProcess.so
 odm/lib64/libAncFilter.so
+odm/lib64/libAncHumanSegFigureFusion.so
 odm/lib64/libAncSegBaseSdk.so
 odm/lib64/libAncSegmentSdk.so
 odm/lib64/libBasicTonePhoto.so
@@ -1015,6 +1019,7 @@ odm/lib64/libOPAlgoCamSinglePortrait.so
 odm/lib64/libOPLUSMotionDetection.so
 odm/lib64/libOplusPDCore.so
 odm/lib64/libOpo_awb.so
+odm/lib64/libPDParamParser.so
 odm/lib64/libRedeyeReduce.so
 odm/lib64/libSchedAssistExtImpl_vendor.so
 odm/lib64/libSpecRecon.so
@@ -1427,6 +1432,7 @@ vendor/lib64/libhme.so
 vendor/lib64/libhwfenceclient.so
 vendor/lib64/libhwliqinterface2.so
 vendor/lib64/libhwlispcffdump.so
+vendor/lib64/libiccprofile.so
 vendor/lib64/libipebpsstriping.so
 vendor/lib64/libipebpsstriping170.so
 vendor/lib64/libipebpsstriping480.so
@@ -1468,6 +1474,8 @@ vendor/lib64/libspectre.so
 vendor/lib64/libswregistrationalgo.so
 vendor/lib64/libtfestriping.so
 vendor/lib64/libubifocus.so
+vendor/lib64/libui.so:vendor/lib64/libui-stock.so;FIX_SONAME
+vendor/lib64/libutils.so:vendor/lib64/libutils-stock.so;FIX_SONAME
 vendor/lib64/libvideoml.so
 vendor/lib64/vendor.qti.hardware.camera.aon-service-impl.so
 vendor/lib64/vendor.qti.hardware.camera.offlinecamera-service-impl.so;DISABLE_DEPS
