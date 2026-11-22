@@ -14,6 +14,7 @@ $(call inherit-product, device/oneplus/macanc/device.mk)
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Evolution X
+BYPASS_CHARGE_SUPPORTED := true
 TARGET_HAS_UDFPS := true
 
 PRODUCT_NAME := lineage_macanc
